@@ -11,6 +11,8 @@ const bedroom: HTMLParagraphElement = document.querySelector(".bedroom")!;
 const dining: HTMLParagraphElement = document.querySelector(".dining")!;
 const kids: HTMLParagraphElement = document.querySelector(".kids")!;
 const searchProducts: HTMLInputElement = document.querySelector(".search_products")!;
+const loader: HTMLDivElement = document.querySelector(".loader_animate");
+const project: HTMLDivElement = document.querySelector(".project");
 
 //GET INFORMATION FROM API
 const API_URL = " https://course-api.com/react-store-products";
@@ -167,6 +169,12 @@ function renderCategoryKids(images: any[]) {
 }
 
 //LOGICAL FUNCTIONS
+function timerLoader() {
+	setTimeout(() => {
+		loader.style.display = "none";
+		project.style.display = "block";
+	}, 3000);
+}
 function inputSearch(images: any[]) {
 	searchProducts.addEventListener("keydown", () => {
 		let first_letter = searchProducts.value;
@@ -192,5 +200,6 @@ function priceRange() {
 function init() {
 	priceRange();
 	getInfoApi();
+	timerLoader();
 }
 init();
