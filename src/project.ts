@@ -10,10 +10,11 @@ const kitchen: HTMLParagraphElement = document.querySelector(".kitchen")!;
 const bedroom: HTMLParagraphElement = document.querySelector(".bedroom")!;
 const dining: HTMLParagraphElement = document.querySelector(".dining")!;
 const kids: HTMLParagraphElement = document.querySelector(".kids")!;
+const searchProducts: HTMLInputElement = document.querySelector(".search_products")!;
 
-const API_URL = " https://course-api.com/react-store-products";
-//LOGICAL VARIABLES
 //GET INFORMATION FROM API
+const API_URL = " https://course-api.com/react-store-products";
+
 export async function getInfoApi() {
 	try {
 		const response = await fetch(API_URL);
@@ -28,6 +29,7 @@ export async function getInfoApi() {
 		renderCategoryBedroom(images);
 		renderCategoryDining(images);
 		renderCategoryKids(images);
+		inputSearch(images);
 	} catch (error) {
 		console.error("NO INTERNET");
 	}
@@ -38,7 +40,7 @@ function renderTable(images: any[]) {
 		let count = 0;
 		for (let i = 0; i < images.length; i++) {
 			count++;
-			console.log(images[i].image);
+
 			products.innerHTML += `	<div class="box">
    <img src="${images[i].image}" alt="">
    <div class="name">
@@ -53,16 +55,14 @@ function renderTable(images: any[]) {
 	}
 }
 
-function priceRange() {
-	const rangeInput: HTMLInputElement = document.querySelector(".range")!;
-	const rangeText: HTMLParagraphElement = document.querySelector(".p")!;
-
-	rangeInput.addEventListener("input", changePriceValue);
-
-	function changePriceValue() {
-		let rangeValue = rangeInput.value;
-		rangeText.textContent = `$${rangeValue}`;
-	}
+function displayProduct(images: any[], i: number) {
+	products.innerHTML += `	<div class="box">
+		<img src="${images[i].image}" alt="">
+		<div class="name">
+		<h4>${images[i].name}</h4>
+		<p class="price">$${images[i].price}</p>
+		</div>
+		</div>`;
 }
 
 function renderCategoryAll(images: any[]) {
@@ -71,7 +71,7 @@ function renderCategoryAll(images: any[]) {
 		let count = 0;
 		for (let i = 0; i < images.length; i++) {
 			count++;
-			console.log(images[i].image);
+
 			products.innerHTML += `	<div class="box">
    <img src="${images[i].image}" alt="">
    <div class="name">
@@ -84,100 +84,67 @@ function renderCategoryAll(images: any[]) {
 	});
 }
 function renderCategoryOffice(images: any[]) {
-	let count = 0;
 	office.addEventListener("click", () => {
 		products.innerHTML = "";
+		let count = 0;
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "office") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+				displayProduct(images, i);
 			}
 		}
+
 		found.innerText = `${count} products found`;
 	});
 }
 function renderCategoryLiving(images: any[]) {
-	let count = 0;
 	living.addEventListener("click", () => {
+		let count = 0;
 		products.innerHTML = "";
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "living room") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+				displayProduct(images, i);
 			}
 		}
 		found.innerText = `${count} products found`;
 	});
 }
 function renderCategoryKitchen(images: any[]) {
-	let count = 0;
 	kitchen.addEventListener("click", () => {
+		let count = 0;
 		products.innerHTML = "";
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "kitchen") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+
+				displayProduct(images, i);
 			}
 		}
 		found.innerText = `${count} products found`;
 	});
 }
 function renderCategoryBedroom(images: any[]) {
-	let count = 0;
 	bedroom.addEventListener("click", () => {
+		let count = 0;
 		products.innerHTML = "";
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "bedroom") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+				displayProduct(images, i);
 			}
 		}
 		found.innerText = `${count} products found`;
 	});
 }
 function renderCategoryDining(images: any[]) {
-	let count = 0;
 	dining.addEventListener("click", () => {
+		let count = 0;
 		products.innerHTML = "";
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "dining") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+				displayProduct(images, i);
 			}
 		}
 		found.innerText = `${count} products found`;
@@ -185,25 +152,42 @@ function renderCategoryDining(images: any[]) {
 }
 
 function renderCategoryKids(images: any[]) {
-	let count = 0;
 	kids.addEventListener("click", () => {
+		let count = 0;
 		found.innerText = "";
 		products.innerHTML = "";
 		for (let i = 0; i < images.length; i++) {
-			count++;
 			if (images[i].category === "kids") {
-				products.innerHTML += `	<div class="box">
-     <img src="${images[i].image}" alt="">
-     <div class="name">
-     <h4>${images[i].name}</h4>
-     <p class="price">$${images[i].price}</p>
-     </div>
-     </div>`;
-				console.log(images[i].company);
+				count++;
+				displayProduct(images, i);
 			}
 		}
 		found.innerText = `${count} products found`;
 	});
+}
+
+//LOGICAL FUNCTIONS
+function inputSearch(images: any[]) {
+	searchProducts.addEventListener("keydown", () => {
+		let first_letter = searchProducts.value;
+		for (let i = 0; i < images.length; i++) {
+			if (images[i].name.startsWith(`${first_letter}`)) {
+				console.log("Searching");
+			}
+		}
+	});
+}
+
+function priceRange() {
+	const rangeInput: HTMLInputElement = document.querySelector(".range")!;
+	const rangeText: HTMLParagraphElement = document.querySelector(".p")!;
+
+	rangeInput.addEventListener("input", changePriceValue);
+
+	function changePriceValue() {
+		let rangeValue = rangeInput.value;
+		rangeText.textContent = `$${rangeValue}`;
+	}
 }
 function init() {
 	priceRange();
