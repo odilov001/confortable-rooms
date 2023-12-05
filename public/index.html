@@ -10,10 +10,14 @@
 			href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap"
 			rel="stylesheet"
 		/>
+		<link
+			rel="shortcut icon"
+			href="https://cdn-icons-png.flaticon.com/128/1946/1946433.png"
+			type="image/x-icon"
+		/>
 	</head>
 	<body>
-<div class="loader_animate">
-
+		<div class="loader_animate">
 			<div class="loader">
 				<div class="bar"></div>
 				<div class="bar"></div>
@@ -25,9 +29,9 @@
 				<div class="bar"></div>
 				<div class="bar"></div>
 				<div class="bar"></div>
-		</div>
+			</div>
 
-		<div class="loader loader--reflect">
+			<div class="loader loader--reflect">
 				<div class="bar"></div>
 				<div class="bar"></div>
 				<div class="bar"></div>
@@ -38,11 +42,11 @@
 				<div class="bar"></div>
 				<div class="bar"></div>
 				<div class="bar"></div>
+			</div>
 		</div>
-</div>
 		<div class="project">
 			<div class="nav">
-				<h1><span class="home">Home</span><span class="pro">/Products</span></h1>
+				<h6><span class="home">Home</span><span class="slash">/</span><span class="pro">Products</span></h6>
 			</div>
 			<div class="container">
 				<div class="category">
@@ -70,30 +74,50 @@
 						<input type="color" value="#000" />
 					</div>
 					<h3>Price</h3>
-					<p class="p">$309999</p>
+					<p class="p">309999</p>
 					<input class="range" type="range" value="$3,0099.99" min="0" max="309999" />
 				</div>
 				<div class="products">
 					<div class="title">
 						<div class="icons">
-							<img class="column_images"
-								src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcToAQbkVpKDoDkE23UbRLGPXFsvoVpy0-_212quME58XZakSykm"
-								alt=""
-							/>
-							<img class="row_images"
-								src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQPLqp5sNIIwsT8MgMN7R8PzP8B0_6KDYEH6gbtcoeWBmf2txCV"
-								alt=""
-							/>
+							<i class="bi bi-grid-fill"
+								><svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="30"
+									height="30"
+									fill="currentColor"
+									class="bi bi-grid-fill"
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"
+									/></svg
+							></i>
+							<i class="bi bi-list"
+								><svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="40"
+									height="35"
+									fill="currentColor"
+									class="bi bi-list"
+									viewBox="0 0 16 16"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+									/></svg
+							></i>
 						</div>
 						<div class="sort-product">
 							<p class="found"></p>
 							<div class="line"></div>
 							<div class="sort">
 								<label for="name">Sort by </label>
-								<select name="" id="name">
-									<option class="option" value="1">Price (Lowest)</option>
-									<option class="option" value="2">Price (Highest)</option>
-									<option class="option" value="3">Name (A-Z)</option>
+								<select class="select_price" name="" id="name">
+									<option class="option" value="0">SORT</option>
+									<option class="option" value="price_low">Price (Lowest)</option>
+									<option class="option" value="price_hight">Price (Highest)</option>
+									<option class="option" value="name">Name (A-Z)</option>
 									<option class="option" value="4">Name (Z-A)</option>
 								</select>
 							</div>
