@@ -37,6 +37,8 @@ async function getInfoApi() {
 		select(images);
 		priceRange(images);
 	} catch (error) {
+		console.dir(error);
+
 		project.innerHTML = `	<div class="error_animate">
 <h1>404 Error</h1>
 <p class="zoom-area">NOT FOUND THIS PAGE</p>
